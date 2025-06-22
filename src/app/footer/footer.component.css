@@ -1,0 +1,111 @@
+.section__container{
+  max-width: var(--max-widht);
+  margin: auto;
+  padding: 5rem 1rem;
+}
+.section_header{
+  margin-bottom: 5px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  text-align: center;
+}
+.section_description{
+  max-width: 600px;
+  margin-inline: auto;
+  color: var(--text-light);
+  text-align: center;
+}
+.footer{
+  background-color: #676363;
+}
+.footer_container{
+  display: grid;
+  gap: 4rem 2rem ;
+}
+.footer_col p{
+  max-width: 300px;
+  margin-block: 2rem;
+  color: #f7f7f7;
+}
+.footer_social{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  list-style-type: none;
+}
+.footer_social a{
+  display: inline-block;
+  padding: 7px 10px;
+  font-size: 1.25rem;
+  color: var(--white);
+  background-color: #efc708;
+  border-radius: 100%;
+  text-decoration: none;
+}
+.footer_social a:hover{
+  background-color: var(--primary-color-dark);
+}
+.footer_col h4{
+  margin-bottom: 2rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+.footer_links{
+  display: grid;
+  gap: 1rem;
+  list-style-type: none;
+}
+.footer_links a{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #f7f7f7;
+}
+.footer_links a:hover{
+  color: var(--primary-color);
+}
+.footer_links a span{
+  font-size: 1.25rem;
+}
+.footer_col form {
+  display: grid;
+  gap: 1rem;
+}
+.footer_col input{
+  padding: .75rem;
+  font-size: 1rem;
+  color: #0D0A0A;
+  background-color: var(--white);
+  border: 1px solid #f7f7f7;
+  border-radius: 5px;
+}
+.footer_col input::placeholder{
+  color: #0D0A0A;
+}
+.footer_col .btn{
+  border-radius: 5px;
+}
+.footer_bar{
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: #f7f7f7;
+  text-align: center;
+}
+.btn{
+  background-color: #efc708;
+  border: none;
+  font-size: 1rem;
+  padding: .75rem 1.5rem;
+  outline: none;
+  white-space: nowrap;
+  color: var(--white);
+  border-radius: 5rem;
+  transition: 0.3s;
+  cursor: pointer;
+}
+btn:hover{
+  background-color: #ff7400;
+}

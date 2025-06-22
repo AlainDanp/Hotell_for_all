@@ -1,0 +1,8 @@
+<a href="javascript:void(0)"
+   class="ui-to-top back-to-top"
+   [style.display]="isVisible ? 'flex' : 'none'"
+   (click)="scrollToTop($event)"
+   title="Retour en Haut">
+  <span class="material-icons">arrow_upward</span>
+  <span class="scroll-percentage">{{ scrollPercentage }}%</span>
+</a>

@@ -1,0 +1,22 @@
+<div class="sidebar-container">
+  <!-- Bouton pour ouvrir/fermer la sidebar -->
+  <span class="material-icons" id="btn" *ngIf="!sidebarOpen" (click)="toggleSidebar()">menu</span>
+  <span class="material-icons" id="cancel" *ngIf="sidebarOpen" (click)="toggleSidebar()">close</span>
+
+  <!-- Sidebar -->
+  <div class="sidebar" [ngClass]="{'active': sidebarOpen}">
+    <header>DANP HOTEL</header>
+    <ul>
+      <li><a routerLink="/Homepage"><span class="material-icons">home</span>Home</a></li>
+      <li><a routerLink="/Chamber"><span class="material-icons">hotel</span>Chamber</a></li>
+      <li><a href="#"><span class="material-icons">room_service</span>Service</a></li>
+      <li><a href="#"><span class="material-icons">event</span>Reservation</a></li>
+      <li><a href="#"><span class="material-icons">info</span>About Us</a></li>
+      <li><a href="#"><span class="material-icons">contact_mail</span>Contact</a></li>
+      <li><a href="#"><span class="material-icons">person</span>Profile</a></li>
+    </ul>
+  </div>
+
+  <!-- Flou en arrière-plan lorsqu'on clique hors de la sidebar -->
+  <div class="content-blur" *ngIf="sidebarOpen" (click)="toggleSidebar()"></div>
+</div>

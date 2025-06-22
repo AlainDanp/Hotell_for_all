@@ -1,0 +1,26 @@
+.ui-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #efc708;
+  color: #fff;
+  padding: 10px;
+  border-radius: 20%;
+  display: none; /* Caché par défaut */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 1000;
+  transition: opacity 0.3s ease-in-out;
+}
+
+
+.ui-to-top:hover {
+  background-color: #333;
+}
+
+.scroll-percentage {
+  margin-left: 5px;
+  font-size: 14px;
+}
