@@ -29,10 +29,8 @@ a{
   font-size: 13px;
   padding-top: 20px;
 }
-.logo-image {
-  height: 80px;
-  width: auto;
-}
+
+
 
 @media (min-width: 540px) {
   .container_grid {

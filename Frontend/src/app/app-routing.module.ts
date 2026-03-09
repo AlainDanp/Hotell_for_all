@@ -18,7 +18,6 @@ const routes: Routes = [
       {path: 'Chamber', component:ChamberComponent}
     ]
   }
-
 ];
 
 @NgModule({

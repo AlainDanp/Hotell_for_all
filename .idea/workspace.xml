@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="809d1f36-4783-49fa-9ad1-dd76cc2a70cb" name="Changes" comment="2e phases">
+      <change beforePath="$PROJECT_DIR$/Frontend/.angular/cache/18.1.4/vite/deps/_metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/.angular/cache/18.1.4/vite/deps/_metadata.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;AlainDanp&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/AlainDanp/Hotell_for_all.git&quot;,
+    &quot;accountId&quot;: &quot;b2b376c1-b3f8-43b7-9e2b-3be009af532b&quot;
+  }
+}</component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2lVmIwbwRo3rUAj2PhYXXnaTfSS" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+    <option name="showVisibilityIcons" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/alain/OneDrive/Documents/X3(ESIEA)/Projet/dAnp Hotel/Frontend/Hotel/Frontend&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.Angular CLI Server.executor&quot;: &quot;Run&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\alain\\OneDrive\\Documents\\X3(ESIEA)\\Projet\\dAnp Hotel\\Frontend\\Hotel\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager" selected="npm.Angular CLI Server">
+    <configuration name="Angular Application" type="JavascriptDebugType" uri="http://localhost:4200">
+      <method v="2" />
+    </configuration>
+    <configuration name="Angular CLI Server" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.21829.142" />
+        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-IU-242.21829.142" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="809d1f36-4783-49fa-9ad1-dd76cc2a70cb" name="Changes" comment="" />
+      <created>1725273546617</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1725273546617</updated>
+      <workItem from="1725273876697" duration="18402000" />
+      <workItem from="1725382496746" duration="735000" />
+      <workItem from="1725660931766" duration="31677000" />
+      <workItem from="1725827089306" duration="8959000" />
+      <workItem from="1726070476143" duration="656000" />
+      <workItem from="1727029013826" duration="13082000" />
+      <workItem from="1727091254031" duration="2608000" />
+      <workItem from="1727196747439" duration="56000" />
+      <workItem from="1729888144629" duration="4710000" />
+      <workItem from="1730580026871" duration="1748000" />
+      <workItem from="1731440825861" duration="333000" />
+      <workItem from="1735325597492" duration="321000" />
+      <workItem from="1736102787348" duration="1000" />
+      <workItem from="1737342943390" duration="3890000" />
+      <workItem from="1738168949908" duration="7761000" />
+      <workItem from="1739269330910" duration="642000" />
+      <workItem from="1739283478703" duration="596000" />
+      <workItem from="1739286147064" duration="552000" />
+      <workItem from="1740015385762" duration="4000" />
+      <workItem from="1746967573764" duration="33000" />
+      <workItem from="1746967647223" duration="1980000" />
+      <workItem from="1750617801060" duration="1415000" />
+      <workItem from="1750619356655" duration="3000" />
+      <workItem from="1750713069404" duration="37000" />
+      <workItem from="1750718787735" duration="267000" />
+      <workItem from="1750849100917" duration="26000" />
+      <workItem from="1754400689467" duration="23000" />
+    </task>
+    <task id="LOCAL-00001" summary="2e phases">
+      <option name="closed" value="true" />
+      <created>1738627767588</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1738627767588</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="2e phases" />
+    <option name="LAST_COMMIT_MESSAGE" value="2e phases" />
+  </component>
+</project>
