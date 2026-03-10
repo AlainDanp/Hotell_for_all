@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {LoginComponent} from "./login/login.component";
-import {LayoutComponent} from "./layout/layout.component";
-import {HomeComponent} from "./home/home.component";
-import {CarouselComponent} from "./carousel/carousel.component";
-import {HeaderComponent} from "./header/header.component";
-import {ChamberComponent} from "./chamber/chamber.component";
+import {LoginComponent} from "./component/login/login.component";
+import {LayoutComponent} from "./component/layout/layout.component";
+import {HomeComponent} from "./component/home/home.component";
+import {CarouselComponent} from "./component/carousel/carousel.component";
+import {HeaderComponent} from "./component/header/header.component";
+import {ChamberComponent} from "./component/chamber/chamber.component";
+import {ReservationComponent} from "./component/reservation/reservation.component";
 
 const routes: Routes = [
   {path: '',redirectTo: 'login', pathMatch: 'full'},
@@ -15,7 +16,8 @@ const routes: Routes = [
     component: LayoutComponent,
     children:[
       {path:'Homepage', component:HomeComponent },
-      {path: 'Chamber', component:ChamberComponent}
+      {path: 'Chamber', component:ChamberComponent},
+      {path: 'Reservation', component:ReservationComponent}
     ]
   }
 ];

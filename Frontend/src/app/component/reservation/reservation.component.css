@@ -1,0 +1,360 @@
+* {
+  box-sizing: border-box;
+  font-family: "Poppins", serif;
+}
+
+.reservation-page {
+  background-color: #111;
+  min-height: 100vh;
+  color: #fff;
+}
+
+/* Hero */
+.reservation-hero {
+  height: 300px;
+  background-image: url('https://t4.ftcdn.net/jpg/00/09/21/15/360_F_9211505_d4hxfNtPeTfgt7AeGmoO7u79P2hwxkoQ.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-overlay h1 {
+  font-size: 2.8rem;
+  color: #efc708;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow: 0 0 20px rgba(239, 199, 8, 0.5);
+}
+
+.hero-overlay p {
+  font-size: 1rem;
+  color: #ccc;
+  margin-top: 10px;
+}
+
+/* Wrapper */
+.reservation-wrapper {
+  padding: 50px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.reservation-card {
+  background: #1a1a1a;
+  border: 1px solid #efc708;
+  border-radius: 16px;
+  padding: 40px;
+  width: 100%;
+  max-width: 900px;
+  box-shadow: 0 0 40px rgba(239, 199, 8, 0.15);
+}
+
+.reservation-card h2 {
+  font-size: 1.8rem;
+  color: #efc708;
+  text-align: center;
+  margin-bottom: 35px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Sections */
+.form-section {
+  margin-bottom: 35px;
+  border-bottom: 1px solid #2a2a2a;
+  padding-bottom: 25px;
+}
+
+.form-section:last-of-type {
+  border-bottom: none;
+}
+
+.form-section h3 {
+  font-size: 1rem;
+  color: #efc708;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.form-section h3 .material-icons {
+  font-size: 1.1rem;
+  color: #efc708;
+}
+
+/* Rows */
+.form-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.input-group {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input-group.full-width {
+  flex: 1 1 100%;
+}
+
+.input-group label {
+  font-size: 0.85rem;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 0.95rem;
+  color: #fff;
+  transition: border-color 0.3s;
+  outline: none;
+  width: 100%;
+}
+
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
+  border-color: #efc708;
+}
+
+.input-group input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+.input-group select option {
+  background: #1a1a1a;
+  color: #fff;
+}
+
+.input-group textarea {
+  resize: vertical;
+}
+
+.error {
+  color: #ff4d4d;
+  font-size: 0.78rem;
+}
+
+/* Services checkboxes */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+}
+
+.service-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 20px 31px;
+  cursor: pointer;
+  transition: border-color 0.3s, background 0.3s;
+  font-size: 0.9rem;
+  color: #ccc;
+  user-select: none;
+}
+
+.service-item input[type="checkbox"] {
+  display: none;
+}
+
+.service-item .checkmark {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #555;
+  border-radius: 4px;
+  flex-shrink: 0;
+  transition: all 0.3s;
+}
+
+.service-item .checkmark.checked {
+  background: #efc708;
+  border-color: #efc708;
+}
+
+.service-item.active {
+  border-color: #efc708;
+  background: #1f1a00;
+  color: #fff;
+}
+
+.service-item .material-icons {
+  font-size: 1.1rem;
+  color: #efc708;
+}
+
+/* Résumé */
+.summary-section {
+  background: #0f0f0f;
+  border-radius: 10px;
+  padding: 20px;
+  border: 1px solid #efc708;
+}
+
+.summary-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: #ccc;
+  padding: 5px 0;
+  border-bottom: 1px solid #222;
+}
+
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #efc708;
+  margin-top: 8px;
+  padding-top: 10px;
+  border-top: 2px solid #efc708;
+}
+
+/* Submit */
+.form-submit {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.btn-reserve {
+  background: transparent;
+  border: 2px solid #efc708;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 14px 40px;
+  border-radius: 40px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: color 0.3s;
+}
+
+.btn-reserve::before {
+  content: "";
+  position: absolute;
+  height: 300%;
+  width: 100%;
+  background: linear-gradient(#25252b, #efc708, #25252b, #efc708);
+  top: -100%;
+  left: 0;
+  z-index: -1;
+  transition: 0.5s;
+}
+
+.btn-reserve:hover::before {
+  top: 0;
+}
+
+.btn-reserve:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn-reserve .material-icons {
+  font-size: 1.1rem;
+}
+
+/* Confirmation */
+.confirmation-message {
+  text-align: center;
+  padding: 40px 20px;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.check-icon {
+  font-size: 4rem;
+  color: #4caf50;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.confirmation-message h3 {
+  font-size: 1.6rem;
+  color: #efc708;
+  margin-bottom: 10px;
+}
+
+.confirmation-message p {
+  color: #ccc;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.btn-new {
+  margin-top: 25px;
+  background: transparent;
+  border: 2px solid #efc708;
+  color: #efc708;
+  padding: 10px 30px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.3s, color 0.3s;
+}
+
+.btn-new:hover {
+  background: #efc708;
+  color: #000;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .reservation-card {
+    padding: 20px;
+  }
+
+  .hero-overlay h1 {
+    font-size: 1.8rem;
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,177 @@
+<app-header></app-header>
+
+<div class="reservation-page">
+  <!-- Hero Banner -->
+  <div class="reservation-hero">
+    <div class="hero-overlay">
+      <h1>Réservez votre séjour</h1>
+      <p>DANP Hotel — Une expérience 5 étoiles vous attend</p>
+    </div>
+  </div>
+
+  <!-- Formulaire de réservation -->
+  <div class="reservation-wrapper">
+    <div class="reservation-card">
+      <h2>Formulaire de Réservation</h2>
+
+      <form [formGroup]="reservationForm" (ngSubmit)="onSubmit()" class="reservation-form">
+
+        <!-- Informations personnelles -->
+        <div class="form-section">
+          <h3><span class="material-icons">person</span> Informations personnelles</h3>
+          <div class="form-row">
+            <div class="input-group">
+              <label>Prénom</label>
+              <input type="text" formControlName="firstName" placeholder="Votre prénom" />
+              <span class="error" *ngIf="f['firstName'].invalid && f['firstName'].touched">Prénom requis</span>
+            </div>
+            <div class="input-group">
+              <label>Nom</label>
+              <input type="text" formControlName="lastName" placeholder="Votre nom" />
+              <span class="error" *ngIf="f['lastName'].invalid && f['lastName'].touched">Nom requis</span>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="input-group">
+              <label>Email</label>
+              <input type="email" formControlName="email" placeholder="votre@email.com" />
+              <span class="error" *ngIf="f['email'].invalid && f['email'].touched">Email invalide</span>
+            </div>
+            <div class="input-group">
+              <label>Téléphone</label>
+              <input type="tel" formControlName="phone" placeholder="+33 6 00 00 00 00" />
+              <span class="error" *ngIf="f['phone'].invalid && f['phone'].touched">Téléphone requis</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Détails du séjour -->
+        <div class="form-section">
+          <h3><span class="material-icons">hotel</span> Détails du séjour</h3>
+          <div class="form-row">
+            <div class="input-group">
+              <label>Date d'arrivée</label>
+              <input type="date" formControlName="checkIn" [min]="today" />
+              <span class="error" *ngIf="f['checkIn'].invalid && f['checkIn'].touched">Date d'arrivée requise</span>
+            </div>
+            <div class="input-group">
+              <label>Date de départ</label>
+              <input type="date" formControlName="checkOut" [min]="f['checkIn'].value || today" />
+              <span class="error" *ngIf="f['checkOut'].invalid && f['checkOut'].touched">Date de départ requise</span>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="input-group">
+              <label>Type de chambre</label>
+              <select formControlName="roomType">
+                <option value="" disabled selected>Choisir une chambre</option>
+                <option value="standard">Chambre Standard — 80€/nuit</option>
+                <option value="deluxe">Chambre Deluxe — 150€/nuit</option>
+                <option value="suite">Suite Junior — 250€/nuit</option>
+                <option value="presidential">Suite Présidentielle — 500€/nuit</option>
+              </select>
+              <span class="error" *ngIf="f['roomType'].invalid && f['roomType'].touched">Veuillez choisir une chambre</span>
+            </div>
+            <div class="input-group">
+              <label>Nombre de personnes</label>
+              <select formControlName="guests">
+                <option value="1">1 personne</option>
+                <option value="2">2 personnes</option>
+                <option value="3">3 personnes</option>
+                <option value="4">4 personnes</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Services supplémentaires -->
+        <div class="form-section">
+          <h3><span class="material-icons">room_service</span> Services supplémentaires</h3>
+          <div class="services-grid">
+            <label class="service-item" [class.active]="f['breakfast'].value">
+              <input type="checkbox" formControlName="breakfast" />
+              <span class="checkmark" [class.checked]="f['breakfast'].value"></span>
+              <span class="material-icons">free_breakfast</span>
+              Petit-déjeuner inclus
+            </label>
+            <label class="service-item" [class.active]="f['spa'].value">
+              <input type="checkbox" formControlName="spa" />
+              <span class="checkmark" [class.checked]="f['spa'].value"></span>
+              <span class="material-icons">spa</span>
+              Accès Spa &amp; Bien-être
+            </label>
+            <label class="service-item" [class.active]="f['parking'].value">
+              <input type="checkbox" formControlName="parking" />
+              <span class="checkmark" [class.checked]="f['parking'].value"></span>
+              <span class="material-icons">local_parking</span>
+              Parking privé
+            </label>
+            <label class="service-item" [class.active]="f['airportTransfer'].value">
+              <input type="checkbox" formControlName="airportTransfer" />
+              <span class="checkmark" [class.checked]="f['airportTransfer'].value"></span>
+              <span class="material-icons">airport_shuttle</span>
+              Navette aéroport
+            </label>
+          </div>
+        </div>
+
+        <!-- Résumé et total -->
+        <div class="form-section summary-section" *ngIf="totalNights > 0 && selectedRoom">
+          <h3><span class="material-icons">receipt</span> Résumé</h3>
+          <div class="summary-details">
+            <div class="summary-line">
+              <span>{{ selectedRoom.label }} × {{ totalNights }} nuit(s)</span>
+              <span>{{ selectedRoom.price * totalNights }}€</span>
+            </div>
+            <div class="summary-line" *ngIf="f['breakfast'].value">
+              <span>Petit-déjeuner × {{ totalNights }} nuit(s)</span>
+              <span>{{ 15 * totalNights }}€</span>
+            </div>
+            <div class="summary-line" *ngIf="f['spa'].value">
+              <span>Spa & Bien-être</span>
+              <span>50€</span>
+            </div>
+            <div class="summary-line" *ngIf="f['parking'].value">
+              <span>Parking × {{ totalNights }} nuit(s)</span>
+              <span>{{ 10 * totalNights }}€</span>
+            </div>
+            <div class="summary-line" *ngIf="f['airportTransfer'].value">
+              <span>Navette aéroport</span>
+              <span>30€</span>
+            </div>
+            <div class="summary-total">
+              <span>Total</span>
+              <span>{{ totalPrice }}€</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Message spécial -->
+        <div class="form-section">
+          <h3><span class="material-icons">notes</span> Demandes spéciales</h3>
+          <div class="input-group full-width">
+            <textarea formControlName="specialRequests" rows="4" placeholder="Précisez vos demandes particulières (vue mer, lit bébé, allergie...)"></textarea>
+          </div>
+        </div>
+
+        <!-- Bouton de soumission -->
+        <div class="form-submit">
+          <button type="submit" class="btn-reserve" [disabled]="reservationForm.invalid">
+            <span class="material-icons">event_available</span>
+            Confirmer la réservation
+          </button>
+        </div>
+
+      </form>
+
+      <!-- Message de confirmation -->
+      <div class="confirmation-message" *ngIf="reservationConfirmed">
+        <span class="material-icons check-icon">check_circle</span>
+        <h3>Réservation confirmée !</h3>
+        <p>Merci <strong>{{ confirmedName }}</strong>, votre réservation a bien été enregistrée.<br>Un email de confirmation vous sera envoyé à <strong>{{ confirmedEmail }}</strong>.</p>
+        <button class="btn-new" (click)="resetForm()">Nouvelle réservation</button>
+      </div>
+
+    </div>
+  </div>
+</div>

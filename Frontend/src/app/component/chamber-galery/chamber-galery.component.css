@@ -1,0 +1,380 @@
+* {
+  box-sizing: border-box;
+  font-family: "Poppins", serif;
+}
+
+/* ===== SECTION GALERIE ===== */
+.galery-section {
+  background-color: #0d0d0d;
+  padding: 5rem 2rem;
+}
+
+.galery-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.galery-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+}
+
+.galery-title span {
+  color: #efc708;
+}
+
+.galery-subtitle {
+  color: #888;
+  font-size: 1rem;
+  max-width: 550px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ===== GRILLE ===== */
+.rooms-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+/* Carte large sur toute la largeur */
+.room-card-wide {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.room-card-wide .room-image-wrapper {
+  border-radius: 0;
+  height: 100%;
+  min-height: 380px;
+}
+
+.room-card-wide .room-image-wrapper img {
+  height: 100%;
+  border-radius: 0;
+}
+
+/* ===== CARTE ===== */
+.room-card {
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.room-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  border-color: #efc708;
+}
+
+.room-card.featured {
+  border-color: #efc708;
+  box-shadow: 0 0 30px rgba(239, 199, 8, 0.15);
+}
+
+/* ===== IMAGE ===== */
+.room-image-wrapper {
+  position: relative;
+  height: 240px;
+  overflow: hidden;
+}
+
+.room-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.room-card:hover .room-image-wrapper img {
+  transform: scale(1.06);
+}
+
+/* Badge type de chambre */
+.room-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 1px solid #444;
+}
+
+.badge-gold {
+  background: rgba(239, 199, 8, 0.9);
+  color: #000;
+  border-color: #efc708;
+}
+
+/* Badge "Populaire" */
+.room-popular {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: #efc708;
+  color: #000;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.popular-top {
+  background: #fff;
+  color: #000;
+}
+
+/* ===== CORPS DE CARTE ===== */
+.room-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.room-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.room-desc {
+  color: #888;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+/* ===== ÉQUIPEMENTS ===== */
+.room-amenities {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.room-amenities li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  color: #aaa;
+}
+
+.room-amenities .material-icons {
+  font-size: 1rem;
+  color: #efc708;
+}
+
+/* ===== FOOTER DE CARTE ===== */
+.room-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+  padding-top: 14px;
+  border-top: 1px solid #2a2a2a;
+}
+
+.room-price {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.price-amount {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #efc708;
+}
+
+.price-unit {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+/* Bouton réserver */
+.btn-book {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  border-radius: 30px;
+  border: 2px solid #efc708;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: transparent;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: color 0.3s;
+}
+
+.btn-book::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #efc708;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+  z-index: -1;
+}
+
+.btn-book:hover {
+  color: #000;
+}
+
+.btn-book:hover::before {
+  transform: scaleX(1);
+}
+
+.btn-book-gold {
+  background: #efc708;
+  color: #000;
+}
+
+.btn-book-gold::before {
+  background: #000;
+}
+
+.btn-book-gold:hover {
+  color: #efc708;
+}
+
+.btn-book .material-icons {
+  font-size: 0.95rem;
+}
+
+/* ===== CTA BAS DE PAGE ===== */
+.chamber-cta {
+  background: linear-gradient(135deg, #1a1400 0%, #111 50%, #1a1400 100%);
+  border-top: 1px solid #efc708;
+  border-bottom: 1px solid #efc708;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.cta-content h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.cta-content p {
+  color: #888;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.cta-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.cta-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 32px;
+  background: #efc708;
+  color: #000;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border-radius: 40px;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.cta-btn-primary:hover {
+  background: #d4ae00;
+  transform: translateY(-2px);
+}
+
+.cta-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 32px;
+  background: transparent;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 2px solid #fff;
+  border-radius: 40px;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: border-color 0.3s, color 0.3s;
+}
+
+.cta-btn-secondary:hover {
+  border-color: #efc708;
+  color: #efc708;
+}
+
+.cta-btn-primary .material-icons,
+.cta-btn-secondary .material-icons {
+  font-size: 1rem;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .rooms-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .room-card-wide {
+    grid-column: 1 / -1;
+    grid-template-columns: 1fr;
+  }
+
+  .room-card-wide .room-image-wrapper {
+    height: 280px;
+  }
+}
+
+@media (max-width: 640px) {
+  .rooms-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .galery-title {
+    font-size: 1.8rem;
+  }
+
+  .room-amenities {
+    grid-template-columns: 1fr;
+  }
+}

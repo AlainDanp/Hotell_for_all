@@ -1,0 +1,330 @@
+/* ===== CAROUSEL PRINCIPAL ===== */
+.chamber-carousel {
+  position: relative;
+  width: 100%;
+  height: 90vh;
+  overflow: hidden;
+  background: #000;
+  user-select: none;
+}
+
+/* ===== SLIDES ===== */
+.slides-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.9s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.slide.active {
+  opacity: 1;
+  pointer-events: all;
+  z-index: 2;
+}
+
+/* ===== KEN BURNS ===== */
+.slide-image {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transform: scale(1);
+  transition: transform 9s ease;
+  will-change: transform;
+}
+
+.slide-image.zoom {
+  transform: scale(1.1);
+}
+
+/* ===== OVERLAYS ===== */
+.slide-overlay-left {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.88) 0%,
+    rgba(0, 0, 0, 0.55) 45%,
+    rgba(0, 0, 0, 0.05) 100%
+  );
+  z-index: 1;
+}
+
+.slide-overlay-bottom {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.7) 0%,
+    transparent 50%
+  );
+  z-index: 1;
+}
+
+/* ===== CONTENU ===== */
+.slide-content {
+  position: absolute;
+  bottom: 14%;
+  left: 8%;
+  max-width: 540px;
+  z-index: 3;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease 0.25s, transform 0.8s ease 0.25s;
+}
+
+.slide-content.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Type badge */
+.slide-type {
+  display: inline-block;
+  background: #efc708;
+  color: #000;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 5px 16px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  margin-bottom: 18px;
+}
+
+/* Nom */
+.slide-name {
+  font-size: clamp(2rem, 4vw, 3.8rem);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.1;
+  margin: 0 0 16px;
+  text-shadow: 0 3px 25px rgba(0, 0, 0, 0.6);
+}
+
+/* Ligne dorée décorative */
+.slide-name::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: #efc708;
+  margin-top: 14px;
+  border-radius: 2px;
+}
+
+/* Description */
+.slide-desc {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.7;
+  margin: 18px 0 22px;
+  max-width: 440px;
+}
+
+/* Prix */
+.slide-price {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 30px;
+}
+
+.price-label {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.price-value {
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 800;
+  color: #efc708;
+  line-height: 1;
+}
+
+.price-unit {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+/* Bouton */
+.slide-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 28px;
+  background: #efc708;
+  color: #000;
+  font-weight: 700;
+  font-size: 0.85rem;
+  border-radius: 40px;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+  box-shadow: 0 4px 20px rgba(239, 199, 8, 0.3);
+}
+
+.slide-btn:hover {
+  background: #fff;
+  color: #000;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(239, 199, 8, 0.4);
+}
+
+.slide-btn .material-icons {
+  font-size: 1rem;
+}
+
+/* ===== BARRE DE PROGRESSION ===== */
+.progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.12);
+  z-index: 20;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #efc708;
+  transition: width 0.05s linear;
+  box-shadow: 0 0 8px rgba(239, 199, 8, 0.6);
+}
+
+/* ===== FLÈCHES ===== */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: rgba(0, 0, 0, 0.35);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.3s, background 0.3s, transform 0.2s;
+  backdrop-filter: blur(6px);
+}
+
+.arrow:hover {
+  border-color: #efc708;
+  background: rgba(239, 199, 8, 0.15);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.arrow .material-icons {
+  font-size: 2rem;
+}
+
+.arrow-left  { left: 24px; }
+.arrow-right { right: 24px; }
+
+/* ===== DOTS ===== */
+.dots {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 10;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.3s, width 0.35s, border-radius 0.35s;
+}
+
+.dot.active {
+  background: #efc708;
+  width: 30px;
+  border-radius: 4px;
+}
+
+/* ===== COMPTEUR ===== */
+.slide-counter {
+  position: absolute;
+  bottom: 24px;
+  right: 30px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  z-index: 10;
+  font-size: 0.8rem;
+  font-family: "Poppins", serif;
+}
+
+.slide-counter .current {
+  color: #efc708;
+  font-weight: 700;
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.slide-counter .sep {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.9rem;
+}
+
+.slide-counter .total {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.85rem;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .chamber-carousel {
+    height: 100svh;
+  }
+
+  .slide-content {
+    left: 5%;
+    right: 5%;
+    max-width: 100%;
+    bottom: 18%;
+  }
+
+  .arrow {
+    width: 42px;
+    height: 42px;
+  }
+
+  .arrow .material-icons {
+    font-size: 1.5rem;
+  }
+
+  .arrow-left  { left: 12px; }
+  .arrow-right { right: 12px; }
+
+  .slide-overlay-left {
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.9) 0%,
+      rgba(0, 0, 0, 0.4) 60%,
+      rgba(0, 0, 0, 0.1) 100%
+    );
+  }
+}

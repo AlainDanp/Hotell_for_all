@@ -1,0 +1,73 @@
+<section class="chamber-carousel"
+  (mouseenter)="pauseAutoPlay()"
+  (mouseleave)="resumeAutoPlay()"
+  (touchstart)="onTouchStart($event)"
+  (touchend)="onTouchEnd($event)">
+
+  <!-- Barre de progression -->
+  <div class="progress-bar">
+    <div class="progress-fill" [style.width.%]="progress"></div>
+  </div>
+
+  <!-- Slides -->
+  <div class="slides-wrapper">
+    <div class="slide"
+      *ngFor="let room of rooms; let i = index"
+      [class.active]="i === currentIndex">
+
+      <!-- Image Ken Burns -->
+      <div class="slide-image"
+        [class.zoom]="i === currentIndex"
+        [style.background-image]="'url(' + room.image + ')'">
+      </div>
+
+      <!-- Overlays -->
+      <div class="slide-overlay-left"></div>
+      <div class="slide-overlay-bottom"></div>
+
+      <!-- Contenu -->
+      <div class="slide-content" [class.visible]="i === currentIndex">
+        <span class="slide-type">{{ room.type }}</span>
+        <h2 class="slide-name">{{ room.name }}</h2>
+        <p class="slide-desc">{{ room.description }}</p>
+        <div class="slide-price">
+          <span class="price-label">À partir de</span>
+          <span class="price-value">{{ room.price }}€</span>
+          <span class="price-unit">/ nuit</span>
+        </div>
+        <a routerLink="/Reservation" class="slide-btn">
+          <span class="material-icons">event_available</span>
+          Réserver
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Flèche gauche -->
+  <button class="arrow arrow-left" (click)="prev()">
+    <span class="material-icons">chevron_left</span>
+  </button>
+
+  <!-- Flèche droite -->
+  <button class="arrow arrow-right" (click)="next()">
+    <span class="material-icons">chevron_right</span>
+  </button>
+
+  <!-- Dots -->
+  <div class="dots">
+    <button class="dot"
+      *ngFor="let room of rooms; let i = index"
+      [class.active]="i === currentIndex"
+      (click)="goTo(i)">
+    </button>
+  </div>
+
+  <!-- Compteur -->
+  <div class="slide-counter">
+    <span class="current">{{ padNumber(currentIndex + 1) }}</span>
+    <span class="sep">/</span>
+    <span class="total">{{ padNumber(rooms.length) }}</span>
+  </div>
+
+</section>
