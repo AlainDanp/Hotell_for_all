@@ -157,20 +157,12 @@
         <!-- Bouton de soumission -->
         <div class="form-submit">
           <button type="submit" class="btn-reserve" [disabled]="reservationForm.invalid">
-            <span class="material-icons">event_available</span>
-            Confirmer la réservation
+            <span class="material-icons">payment</span>
+            Procéder au paiement
           </button>
         </div>
 
       </form>
-
-      <!-- Message de confirmation -->
-      <div class="confirmation-message" *ngIf="reservationConfirmed">
-        <span class="material-icons check-icon">check_circle</span>
-        <h3>Réservation confirmée !</h3>
-        <p>Merci <strong>{{ confirmedName }}</strong>, votre réservation a bien été enregistrée.<br>Un email de confirmation vous sera envoyé à <strong>{{ confirmedEmail }}</strong>.</p>
-        <button class="btn-new" (click)="resetForm()">Nouvelle réservation</button>
-      </div>
 
     </div>
   </div>

@@ -8,7 +8,10 @@
       "Bash(cat \"C:\\\\Users\\\\alain\\\\OneDrive\\\\Documents\\\\X3\\(ESIEA\\)\\\\Projet\\\\dAnp Hotel\\\\Frontend\\\\Hotel\\\\Frontend\\\\angular.json\" | grep -A 20 '\"assets\"')",
       "Bash(ls \"C:\\\\Users\\\\alain\\\\OneDrive\\\\Documents\\\\X3\\(ESIEA\\)\\\\Projet\\\\dAnp Hotel\\\\Frontend\\\\Hotel\\\\Frontend\\\\src\\\\app\\\\component\")",
       "Bash(find \"C:\\\\Users\\\\alain\\\\OneDrive\\\\Documents\\\\X3\\(ESIEA\\)\\\\Projet\\\\dAnp Hotel\\\\Frontend\\\\Hotel\\\\Frontend\\\\src\\\\app\\\\component\" -name \"*profile*\" 2>/dev/null; echo \"---\"; ls \"C:\\\\Users\\\\alain\\\\OneDrive\\\\Documents\\\\X3\\(ESIEA\\)\\\\Projet\\\\dAnp Hotel\\\\Frontend\\\\Hotel\\\\Frontend\\\\src\\\\app\\\\component\" | grep -i profile)",
-      "Bash(ls \"C:\\\\Users\\\\alain\\\\OneDrive\\\\Documents\\\\X3\\(ESIEA\\)\\\\Projet\\\\dAnp Hotel\\\\Frontend\\\\Hotel\\\\Frontend\")"
+      "Bash(ls \"C:\\\\Users\\\\alain\\\\OneDrive\\\\Documents\\\\X3\\(ESIEA\\)\\\\Projet\\\\dAnp Hotel\\\\Frontend\\\\Hotel\\\\Frontend\")",
+      "Bash(find \"/c/Users/alain/OneDrive/Documents/X3\\(ESIEA\\)/Projet/dAnp Hotel/Frontend/Hotel/Frontend\" -type f -name \"*.guard.ts\" 2>/dev/null)",
+      "Bash(find \"/c/Users/alain/OneDrive/Documents/X3\\(ESIEA\\)/Projet/dAnp Hotel/Frontend/Hotel/Frontend\" -type f \\\\\\( -name \"auth.service.ts\" -o -name \"auth.interceptor.ts\" -o -name \"not-found.component.html\" \\\\\\) 2>/dev/null)",
+      "Bash(cat \"C:\\\\Users\\\\alain\\\\OneDrive\\\\Documents\\\\X3\\(ESIEA\\)\\\\Projet\\\\dAnp Hotel\\\\Frontend\\\\Hotel\\\\Frontend\\\\package.json\" | grep -E '\"swiper|scrollreveal')"
     ]
   }
 }

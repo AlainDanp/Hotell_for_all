@@ -3,15 +3,12 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  sidebarOpen: boolean = false;  // Variable pour gérer l'état de la sidebar
+  sidebarOpen = false;
 
-  // Méthode pour basculer l'état de la sidebar
-  isSidebarOpen: any;
   toggleSidebar(): void {
     this.sidebarOpen = !this.sidebarOpen;
   }
-
 }

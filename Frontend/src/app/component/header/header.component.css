@@ -59,6 +59,13 @@
 .sidebar ul li a span {
   margin-right: 15px;
 }
+.sidebar ul li a.active-link {
+  background: #444;
+  padding-left: 40px;
+  border-left: 3px solid #efc708;
+  color: #efc708;
+}
+
 
 #btn, #cancel {
   position: fixed;

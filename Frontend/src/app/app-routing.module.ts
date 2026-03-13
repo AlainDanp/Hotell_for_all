@@ -10,6 +10,7 @@ import {AboutComponent} from "./component/about/about.component";
 import {ServicePageComponent} from "./component/service-page/service-page.component";
 import {NotFoundComponent} from "./component/not-found/not-found.component";
 import {ProfileComponent} from "./component/profile/profile.component";
+import {PaymentComponent} from "./component/payment/payment.component";
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
@@ -26,14 +27,17 @@ const routes: Routes = [
       {path: 'Contact', component:ContactComponent},
       {path: 'About', component:AboutComponent},
       {path: 'Services', component:ServicePageComponent},
-      {path: 'Profile', component:ProfileComponent}
+      {path: 'Profile', component:ProfileComponent},
+      {path: 'Payment', component:PaymentComponent}
     ]
   },
   {path: '**', component: NotFoundComponent}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{
+    scrollPositionRestoration: 'top'
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

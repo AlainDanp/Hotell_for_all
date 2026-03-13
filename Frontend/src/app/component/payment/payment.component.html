@@ -1,0 +1,245 @@
+<div class="payment-page">
+  <app-header></app-header>
+
+  <div class="payment-container">
+
+    <!-- Résumé de la réservation -->
+    <div class="summary-card" *ngIf="summary">
+      <h2 class="summary-title">Récapitulatif de votre réservation</h2>
+      <div class="summary-grid">
+        <div class="summary-item">
+          <span class="label">Chambre</span>
+          <span class="value">{{ summary.roomLabel }}</span>
+        </div>
+        <div class="summary-item">
+          <span class="label">Client</span>
+          <span class="value">{{ summary.firstName }} {{ summary.lastName }}</span>
+        </div>
+        <div class="summary-item">
+          <span class="label">Arrivée</span>
+          <span class="value">{{ formatDate(summary.checkIn) }}</span>
+        </div>
+        <div class="summary-item">
+          <span class="label">Départ</span>
+          <span class="value">{{ formatDate(summary.checkOut) }}</span>
+        </div>
+        <div class="summary-item">
+          <span class="label">Nuits</span>
+          <span class="value">{{ summary.nights }}</span>
+        </div>
+        <div class="summary-item">
+          <span class="label">Voyageurs</span>
+          <span class="value">{{ summary.guests }}</span>
+        </div>
+        <div class="summary-extras" *ngIf="summary.breakfast || summary.spa || summary.parking || summary.airportTransfer">
+          <span class="label">Options</span>
+          <span class="value extras">
+            <span *ngIf="summary.breakfast">Petit-déjeuner</span>
+            <span *ngIf="summary.spa">Spa</span>
+            <span *ngIf="summary.parking">Parking</span>
+            <span *ngIf="summary.airportTransfer">Transfert aéroport</span>
+          </span>
+        </div>
+      </div>
+      <div class="summary-total">
+        <span>Total à payer</span>
+        <span class="total-amount">{{ summary.totalAmount | currency:'XAF':'symbol':'1.0-0' }} F CFA</span>
+      </div>
+    </div>
+
+    <!-- Étapes de paiement -->
+    <div class="payment-card" *ngIf="status === 'idle' || status === 'processing'">
+
+      <!-- Sélection du mode de paiement -->
+      <h2 class="section-title">Choisissez votre mode de paiement</h2>
+      <div class="methods-grid">
+        <button
+          *ngFor="let m of methods"
+          class="method-btn"
+          [class.selected]="selectedMethod === m.id"
+          (click)="selectMethod(m.id)"
+          [style.--method-color]="m.color">
+          <span class="material-icons">{{ m.icon }}</span>
+          <span class="method-label">{{ m.label }}</span>
+        </button>
+      </div>
+
+      <!-- Formulaire Mobile Money -->
+      <div class="form-section" *ngIf="isMobile" [formGroup]="mobileForm">
+        <h3 class="form-title">
+          <span class="material-icons">smartphone</span>
+          Paiement Mobile Money
+        </h3>
+        <p class="form-hint">Entrez le numéro associé à votre compte {{ currentMethod?.label }}.</p>
+        <div class="field-group">
+          <label for="phone">Numéro de téléphone</label>
+          <div class="input-prefix">
+            <span class="prefix">+237</span>
+            <input
+              id="phone"
+              type="tel"
+              formControlName="phone"
+              placeholder="6X XXX XX XX"
+              maxlength="9">
+          </div>
+          <div class="field-error"
+            *ngIf="mobileForm.get('phone')?.invalid && mobileForm.get('phone')?.touched">
+            Numéro invalide (ex: 671234567)
+          </div>
+        </div>
+      </div>
+
+      <!-- Formulaire Carte Bancaire -->
+      <div class="form-section" *ngIf="isCard" [formGroup]="cardForm">
+        <h3 class="form-title">
+          <span class="material-icons">credit_card</span>
+          Paiement par carte
+        </h3>
+        <div class="card-preview" [class.mastercard]="selectedMethod === 'mastercard'">
+          <div class="card-preview-top">
+            <span class="card-chip material-icons">memory</span>
+            <span class="card-brand">{{ currentMethod?.label }}</span>
+          </div>
+          <div class="card-number-preview">
+            {{ cardForm.get('cardNumber')?.value || '•••• •••• •••• ••••' }}
+          </div>
+          <div class="card-preview-bottom">
+            <span>{{ cardForm.get('cardName')?.value || 'VOTRE NOM' }}</span>
+            <span>{{ cardForm.get('expiry')?.value || 'MM/AA' }}</span>
+          </div>
+        </div>
+
+        <div class="fields-row">
+          <div class="field-group full">
+            <label for="cardNumber">Numéro de carte</label>
+            <input
+              id="cardNumber"
+              type="text"
+              formControlName="cardNumber"
+              placeholder="1234 5678 9012 3456"
+              maxlength="16"
+              (input)="formatCardNumber($event)">
+            <div class="field-error"
+              *ngIf="cardForm.get('cardNumber')?.invalid && cardForm.get('cardNumber')?.touched">
+              Numéro de carte invalide (16 chiffres)
+            </div>
+          </div>
+        </div>
+
+        <div class="fields-row">
+          <div class="field-group full">
+            <label for="cardName">Nom sur la carte</label>
+            <input
+              id="cardName"
+              type="text"
+              formControlName="cardName"
+              placeholder="JEAN DUPONT">
+            <div class="field-error"
+              *ngIf="cardForm.get('cardName')?.invalid && cardForm.get('cardName')?.touched">
+              Champ requis
+            </div>
+          </div>
+        </div>
+
+        <div class="fields-row two-cols">
+          <div class="field-group">
+            <label for="expiry">Date d'expiration</label>
+            <input
+              id="expiry"
+              type="text"
+              formControlName="expiry"
+              placeholder="MM/AA"
+              maxlength="5"
+              (input)="formatExpiry($event)">
+            <div class="field-error"
+              *ngIf="cardForm.get('expiry')?.invalid && cardForm.get('expiry')?.touched">
+              Format invalide (MM/AA)
+            </div>
+          </div>
+          <div class="field-group">
+            <label for="cvv">CVV</label>
+            <input
+              id="cvv"
+              type="password"
+              formControlName="cvv"
+              placeholder="•••"
+              maxlength="4">
+            <div class="field-error"
+              *ngIf="cardForm.get('cvv')?.invalid && cardForm.get('cvv')?.touched">
+              CVV invalide
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bouton de paiement -->
+      <button
+        class="pay-btn"
+        [disabled]="!selectedMethod || (selectedMethod && activeForm.invalid) || status === 'processing'"
+        (click)="pay()">
+        <span *ngIf="status !== 'processing'">
+          <span class="material-icons">lock</span>
+          Payer {{ summary?.totalAmount | currency:'XAF':'symbol':'1.0-0' }} F CFA
+        </span>
+        <span *ngIf="status === 'processing'" class="processing-label">
+          <span class="spinner"></span>
+          Traitement en cours…
+        </span>
+      </button>
+
+      <p class="secure-note">
+        <span class="material-icons">shield</span>
+        Paiement 100 % sécurisé — vos données ne sont jamais stockées.
+      </p>
+    </div>
+
+    <!-- Écran Succès -->
+    <div class="result-card success-card" *ngIf="status === 'success'">
+      <div class="result-icon success-icon">
+        <span class="material-icons">check_circle</span>
+      </div>
+      <h2>Paiement réussi !</h2>
+      <p>Votre réservation est confirmée. Un e-mail de confirmation a été envoyé à <strong>{{ summary?.email }}</strong>.</p>
+      <div class="result-details">
+        <div class="result-row">
+          <span>Chambre</span>
+          <span>{{ summary?.roomLabel }}</span>
+        </div>
+        <div class="result-row">
+          <span>Montant payé</span>
+          <span class="gold">{{ summary?.totalAmount | currency:'XAF':'symbol':'1.0-0' }} F CFA</span>
+        </div>
+        <div class="result-row">
+          <span>Arrivée</span>
+          <span>{{ summary ? formatDate(summary.checkIn) : '' }}</span>
+        </div>
+      </div>
+      <button class="home-btn" (click)="goHome()">
+        <span class="material-icons">home</span>
+        Retour à l'accueil
+      </button>
+    </div>
+
+    <!-- Écran Échec -->
+    <div class="result-card failed-card" *ngIf="status === 'failed'">
+      <div class="result-icon failed-icon">
+        <span class="material-icons">cancel</span>
+      </div>
+      <h2>Paiement échoué</h2>
+      <p>La transaction n'a pas pu être complétée. Veuillez vérifier vos informations et réessayer.</p>
+      <div class="result-actions">
+        <button class="retry-btn" (click)="retry()">
+          <span class="material-icons">refresh</span>
+          Réessayer
+        </button>
+        <button class="back-btn" (click)="goReservation()">
+          <span class="material-icons">arrow_back</span>
+          Modifier la réservation
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <app-footer></app-footer>
+</div>

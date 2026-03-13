@@ -2,7 +2,7 @@
 .section__container{
   max-width: var(--max-widht);
   margin: auto;
-  padding: 5rem 1rem;
+  padding: 2rem 2rem;
 }
 .section_header{
   margin-bottom: 5px;
@@ -101,6 +101,10 @@
 }
 .journey_card:hover .journey_card_content{
   top: 0;
+}
+
+showcase_btn{
+  margin-bottom: 3rem;
 }
 .journey_card_content span{
   display: inline-block;

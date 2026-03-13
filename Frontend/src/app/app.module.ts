@@ -28,6 +28,10 @@ import { AboutComponent } from './component/about/about.component';
 import { ServicePageComponent } from './component/service-page/service-page.component';
 import { NotFoundComponent } from './component/not-found/not-found.component';
 import { ProfileComponent } from './component/profile/profile.component';
+import { PaymentComponent } from './component/payment/payment.component';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -51,18 +55,22 @@ import { ProfileComponent } from './component/profile/profile.component';
     AboutComponent,
     ServicePageComponent,
     NotFoundComponent,
-    ProfileComponent
+    ProfileComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     CommonModule,
+    HttpClientModule,
     OverlayModule,
     CdkMenuModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

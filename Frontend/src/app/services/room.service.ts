@@ -16,7 +16,7 @@ export interface Room {
 @Injectable({ providedIn: 'root' })
 export class RoomService {
 
-  private rooms: Room[] = [
+  private readonly rooms: Room[] = [
     {
       id: 'R001',
       name: 'Chambre Standard',
