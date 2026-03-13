@@ -1,0 +1,169 @@
+<app-header></app-header>
+
+<!-- Hero -->
+<div class="contact-hero">
+  <div class="hero-overlay">
+    <p class="hero-tag">DANP Hotel — 5 étoiles</p>
+    <h1>Contactez-nous</h1>
+    <p class="hero-sub">Notre équipe est disponible 24h/24 pour répondre à toutes vos demandes</p>
+  </div>
+</div>
+
+<!-- Cartes infos -->
+<section class="info-section">
+  <div class="info-grid">
+
+    <div class="info-card">
+      <div class="info-icon">
+        <span class="material-icons">phone</span>
+      </div>
+      <h3>Téléphone</h3>
+      <p>+237 691 73 17 85</p>
+      <a href="tel:+237691731785" class="info-link">Appeler maintenant</a>
+    </div>
+
+    <div class="info-card">
+      <div class="info-icon">
+        <span class="material-icons">email</span>
+      </div>
+      <h3>Email</h3>
+      <p>alain.datouo&#64;gmail.com</p>
+      <a href="mailto:alain.datouo@gmail.com" class="info-link">Envoyer un email</a>
+    </div>
+
+    <div class="info-card">
+      <div class="info-icon">
+        <span class="material-icons">location_on</span>
+      </div>
+      <h3>Adresse</h3>
+      <p>Ngousso, Yaoundé<br>Cameroun</p>
+      <a href="https://maps.google.com/?q=Ngousso,Yaoundé,Cameroun" target="_blank" class="info-link">Voir sur la carte</a>
+    </div>
+
+    <div class="info-card">
+      <div class="info-icon">
+        <span class="material-icons">schedule</span>
+      </div>
+      <h3>Réception</h3>
+      <p>Lundi – Dimanche<br>24h / 24</p>
+      <span class="info-badge">Toujours ouvert</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- Formulaire + Carte -->
+<section class="contact-main">
+
+  <!-- Formulaire -->
+  <div class="form-panel">
+    <div class="form-header">
+      <h2>Envoyez-nous un message</h2>
+      <p>Remplissez le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais.</p>
+    </div>
+
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form" *ngIf="!messageSent">
+
+      <div class="form-row">
+        <div class="field">
+          <label>Nom complet</label>
+          <div class="input-wrapper">
+            <span class="material-icons">person</span>
+            <input type="text" formControlName="name" placeholder="Votre nom" />
+          </div>
+          <span class="err" *ngIf="f['name'].invalid && f['name'].touched">Nom requis</span>
+        </div>
+        <div class="field">
+          <label>Email</label>
+          <div class="input-wrapper">
+            <span class="material-icons">email</span>
+            <input type="email" formControlName="email" placeholder="votre@email.com" />
+          </div>
+          <span class="err" *ngIf="f['email'].invalid && f['email'].touched">Email invalide</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Téléphone (optionnel)</label>
+        <div class="input-wrapper">
+          <span class="material-icons">phone</span>
+          <input type="tel" formControlName="phone" placeholder="+237 6XX XX XX XX" />
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Sujet</label>
+        <div class="input-wrapper">
+          <span class="material-icons">topic</span>
+          <select formControlName="subject">
+            <option value="" disabled>Choisir un sujet</option>
+            <option value="reservation">Réservation</option>
+            <option value="info">Informations générales</option>
+            <option value="plainte">Réclamation</option>
+            <option value="partenariat">Partenariat</option>
+            <option value="autre">Autre</option>
+          </select>
+        </div>
+        <span class="err" *ngIf="f['subject'].invalid && f['subject'].touched">Sujet requis</span>
+      </div>
+
+      <div class="field">
+        <label>Message</label>
+        <textarea formControlName="message" rows="5" placeholder="Décrivez votre demande..."></textarea>
+        <span class="err" *ngIf="f['message'].invalid && f['message'].touched">Message requis</span>
+      </div>
+
+      <button type="submit" class="btn-send" [disabled]="contactForm.invalid">
+        <span class="material-icons">send</span>
+        Envoyer le message
+      </button>
+
+    </form>
+
+    <!-- Confirmation -->
+    <div class="sent-message" *ngIf="messageSent">
+      <span class="material-icons sent-icon">mark_email_read</span>
+      <h3>Message envoyé !</h3>
+      <p>Merci <strong>{{ confirmedName }}</strong>, nous avons bien reçu votre message et vous répondrons rapidement.</p>
+      <button class="btn-new" (click)="resetForm()">Envoyer un autre message</button>
+    </div>
+  </div>
+
+  <!-- Carte Google Maps -->
+  <div class="map-panel">
+    <div class="map-header">
+      <h2>Nous trouver</h2>
+      <p>Ngousso, Yaoundé, Cameroun</p>
+    </div>
+    <div class="map-wrapper">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3980.7!2d11.52!3d3.87!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x108bcf7a309ba413%3A0x93e4277cc4c0536a!2sNgousso%2C%20Yaound%C3%A9%2C%20Cameroun!5e0!3m2!1sfr!2sfr!4v1"
+        allowfullscreen
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+
+    <!-- Réseaux sociaux -->
+    <div class="socials">
+      <p class="socials-label">Suivez-nous</p>
+      <div class="socials-links">
+        <a href="#" class="social-btn facebook">
+          <i class="bx bxl-facebook"></i>
+        </a>
+        <a href="#" class="social-btn instagram">
+          <i class="bx bxl-instagram"></i>
+        </a>
+        <a href="#" class="social-btn youtube">
+          <i class="bx bxl-youtube"></i>
+        </a>
+        <a href="#" class="social-btn whatsapp">
+          <i class="bx bxl-whatsapp"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<app-footer></app-footer>

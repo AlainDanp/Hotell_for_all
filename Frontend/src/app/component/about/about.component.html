@@ -1,0 +1,198 @@
+<app-header></app-header>
+
+<!-- ===== HERO ===== -->
+<div class="about-hero">
+  <div class="hero-overlay">
+    <p class="hero-tag">Notre Histoire</p>
+    <h1>À Propos de Nous</h1>
+    <p class="hero-sub">Découvrez l'histoire, les valeurs et l'équipe qui font du DANP Hotel un lieu d'exception</p>
+  </div>
+</div>
+
+<!-- ===== HISTOIRE ===== -->
+<section class="story-section">
+  <div class="story-grid">
+    <div class="story-images">
+      <img class="img-main" src="image/img88d.jpg" alt="DANP Hotel" />
+      <img class="img-secondary" src="image/45.jpg" alt="DANP Hotel intérieur" />
+      <div class="experience-badge">
+        <span class="badge-number">10+</span>
+        <span class="badge-text">Ans d'excellence</span>
+      </div>
+    </div>
+    <div class="story-content">
+      <span class="section-tag">Notre Histoire</span>
+      <h2>Un hôtel né de la passion<br /><span class="gold">du luxe et du service</span></h2>
+      <p>
+        Fondé il y a plus de dix ans au cœur de Yaoundé, le <strong>DANP Hotel</strong> est né d'une vision simple mais ambitieuse : offrir à chaque visiteur une expérience hôtelière inoubliable, alliant luxe, confort et chaleur humaine.
+      </p>
+      <p>
+        Depuis ses débuts, l'hôtel n'a cessé de grandir, de se réinventer et d'élever ses standards pour satisfaire une clientèle internationale exigeante. Chaque chambre, chaque service, chaque détail a été pensé pour créer un havre de sérénité et d'élégance.
+      </p>
+      <div class="story-stats">
+        <div class="stat">
+          <span class="stat-number">12k+</span>
+          <span class="stat-label">Clients satisfaits</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">4.8★</span>
+          <span class="stat-label">Note moyenne</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">50+</span>
+          <span class="stat-label">Chambres &amp; Suites</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VALEURS ===== -->
+<section class="values-section">
+  <div class="values-header">
+    <span class="section-tag">Ce qui nous guide</span>
+    <h2>Nos Valeurs</h2>
+    <p>Les piliers sur lesquels repose chaque interaction, chaque service et chaque séjour au DANP Hotel.</p>
+  </div>
+  <div class="values-grid">
+    <div class="value-card">
+      <div class="value-icon">
+        <span class="material-icons">diamond</span>
+      </div>
+      <h3>Excellence</h3>
+      <p>Nous visons la perfection dans chaque détail, du service en chambre à l'accueil de nos hôtes.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">
+        <span class="material-icons">favorite</span>
+      </div>
+      <h3>Hospitalité</h3>
+      <p>Chaque client est traité comme un invité d'honneur. La chaleur humaine est au cœur de tout ce que nous faisons.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">
+        <span class="material-icons">eco</span>
+      </div>
+      <h3>Responsabilité</h3>
+      <p>Engagés pour un tourisme durable, nous mettons en place des pratiques respectueuses de l'environnement.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">
+        <span class="material-icons">auto_awesome</span>
+      </div>
+      <h3>Innovation</h3>
+      <p>Nous réinventons constamment notre offre pour vous offrir les meilleures expériences de demain.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MISSION ===== -->
+<section class="mission-section">
+  <div class="mission-image">
+    <img src="image/piscine.jpg" alt="Piscine DANP Hotel" />
+  </div>
+  <div class="mission-content">
+    <span class="section-tag light">Notre Mission</span>
+    <h2>Créer des souvenirs<br />qui durent toute une vie</h2>
+    <p>
+      Notre mission est simple : transformer chaque séjour en une expérience mémorable. Que vous soyez ici pour affaires ou pour le plaisir, notre équipe dédiée s'assure que chaque instant passé au DANP Hotel dépasse vos attentes.
+    </p>
+    <ul class="mission-list">
+      <li>
+        <span class="material-icons">check_circle</span>
+        Service personnalisé adapté à chaque client
+      </li>
+      <li>
+        <span class="material-icons">check_circle</span>
+        Équipements de classe mondiale disponibles 24h/24
+      </li>
+      <li>
+        <span class="material-icons">check_circle</span>
+        Gastronomie raffinée aux saveurs locales et internationales
+      </li>
+      <li>
+        <span class="material-icons">check_circle</span>
+        Environnement sécurisé et intime pour votre tranquillité
+      </li>
+    </ul>
+    <a routerLink="/Reservation" class="btn-mission">
+      <span class="material-icons">event_available</span>
+      Réserver un séjour
+    </a>
+  </div>
+</section>
+
+<!-- ===== ÉQUIPE ===== -->
+<section class="team-section">
+  <div class="team-header">
+    <span class="section-tag">Les visages du DANP Hotel</span>
+    <h2>Notre Équipe</h2>
+    <p>Des professionnels passionnés, dédiés à votre confort et à votre satisfaction.</p>
+  </div>
+  <div class="team-grid">
+    <div class="team-card" *ngFor="let member of team">
+      <div class="team-avatar">
+        <img [src]="member.photo" [alt]="member.name" />
+        <div class="team-socials">
+          <a href="#"><i class="bx bxl-linkedin"></i></a>
+          <a href="#"><i class="bx bxl-instagram"></i></a>
+        </div>
+      </div>
+      <div class="team-info">
+        <h3>{{ member.name }}</h3>
+        <span class="team-role">{{ member.role }}</span>
+        <p>{{ member.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RÉCOMPENSES ===== -->
+<section class="awards-section">
+  <div class="awards-header">
+    <span class="section-tag">Reconnus pour notre excellence</span>
+    <h2>Nos Distinctions</h2>
+  </div>
+  <div class="awards-grid">
+    <div class="award-card">
+      <span class="material-icons">emoji_events</span>
+      <h4>Meilleur Hôtel 5 Étoiles</h4>
+      <p>Cameroun Tourism Awards — 2023</p>
+    </div>
+    <div class="award-card">
+      <span class="material-icons">star</span>
+      <h4>Excellence de Service</h4>
+      <p>TripAdvisor Travelers' Choice — 2022 &amp; 2023</p>
+    </div>
+    <div class="award-card">
+      <span class="material-icons">eco</span>
+      <h4>Hôtel Éco-Responsable</h4>
+      <p>Green Hospitality Certification — 2023</p>
+    </div>
+    <div class="award-card">
+      <span class="material-icons">restaurant</span>
+      <h4>Meilleure Table</h4>
+      <p>Gastronomie d'Afrique Centrale — 2022</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="about-cta">
+  <div class="cta-content">
+    <h2>Prêt à vivre l'expérience DANP ?</h2>
+    <p>Rejoignez les milliers de clients qui nous font confiance pour leurs séjours d'exception.</p>
+    <div class="cta-buttons">
+      <a routerLink="/Reservation" class="cta-primary">
+        <span class="material-icons">event_available</span>
+        Réserver maintenant
+      </a>
+      <a routerLink="/Contact" class="cta-secondary">
+        <span class="material-icons">contact_mail</span>
+        Nous contacter
+      </a>
+    </div>
+  </div>
+</section>
+
+<app-footer></app-footer>

@@ -23,6 +23,11 @@ import { LoaderComponent } from './component/loader/loader.component';
 import { CarouselChamberComponent } from './component/carousel-chamber/carousel-chamber.component';
 import { ChamberGaleryComponent } from './component/chamber-galery/chamber-galery.component';
 import { ReservationComponent } from './component/reservation/reservation.component';
+import { ContactComponent } from './component/contact/contact.component';
+import { AboutComponent } from './component/about/about.component';
+import { ServicePageComponent } from './component/service-page/service-page.component';
+import { NotFoundComponent } from './component/not-found/not-found.component';
+import { ProfileComponent } from './component/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +46,12 @@ import { ReservationComponent } from './component/reservation/reservation.compon
     LoaderComponent,
     CarouselChamberComponent,
     ChamberGaleryComponent,
-    ReservationComponent
+    ReservationComponent,
+    ContactComponent,
+    AboutComponent,
+    ServicePageComponent,
+    NotFoundComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

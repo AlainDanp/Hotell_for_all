@@ -1,0 +1,318 @@
+<app-header></app-header>
+<div class="profile-page">
+
+  <!-- ===== HERO BANNIÈRE ===== -->
+  <div class="profile-hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="avatar-ring">
+        <div class="avatar">{{ initials }}</div>
+        <div class="tier-badge">
+          <span class="material-icons">star</span>
+          {{ user.tier }}
+        </div>
+      </div>
+      <div class="hero-info">
+        <h1>{{ user.firstName }} {{ user.lastName }}</h1>
+        <p class="hero-sub">Membre depuis {{ user.memberSince }} &bull; {{ user.points | number }} points fidélité</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TABS ===== -->
+  <div class="profile-tabs">
+    <button [class.active]="activeTab === 'info'"         (click)="setTab('info')">
+      <span class="material-icons">person</span> Profil
+    </button>
+    <button [class.active]="activeTab === 'reservations'" (click)="setTab('reservations')">
+      <span class="material-icons">hotel</span> Réservations
+    </button>
+    <button [class.active]="activeTab === 'loyalty'"      (click)="setTab('loyalty')">
+      <span class="material-icons">star</span> Fidélité
+    </button>
+    <button [class.active]="activeTab === 'security'"     (click)="setTab('security')">
+      <span class="material-icons">lock</span> Sécurité
+    </button>
+  </div>
+
+  <!-- ===== CONTENU ===== -->
+  <div class="profile-body">
+
+    <!-- ── ONGLET INFO ── -->
+    <div class="tab-panel" *ngIf="activeTab === 'info'">
+
+      <div class="panel-header">
+        <h2>Informations personnelles</h2>
+        <button class="btn-edit" (click)="toggleEdit()">
+          <span class="material-icons">{{ editMode ? 'close' : 'edit' }}</span>
+          {{ editMode ? 'Annuler' : 'Modifier' }}
+        </button>
+      </div>
+
+      <!-- Message succès -->
+      <div class="alert-success" *ngIf="saveSuccess">
+        <span class="material-icons">check_circle</span>
+        Profil mis à jour avec succès !
+      </div>
+
+      <!-- Formulaire -->
+      <form [formGroup]="profileForm" (ngSubmit)="saveProfile()">
+        <div class="form-grid">
+
+          <div class="field-group">
+            <label>Prénom</label>
+            <input type="text" formControlName="firstName" [readonly]="!editMode"
+                   [class.editable]="editMode">
+          </div>
+
+          <div class="field-group">
+            <label>Nom</label>
+            <input type="text" formControlName="lastName" [readonly]="!editMode"
+                   [class.editable]="editMode">
+          </div>
+
+          <div class="field-group">
+            <label>Email</label>
+            <input type="email" formControlName="email" [readonly]="!editMode"
+                   [class.editable]="editMode">
+          </div>
+
+          <div class="field-group">
+            <label>Téléphone</label>
+            <input type="tel" formControlName="phone" [readonly]="!editMode"
+                   [class.editable]="editMode">
+          </div>
+
+          <div class="field-group">
+            <label>Nationalité</label>
+            <input type="text" formControlName="nationality" [readonly]="!editMode"
+                   [class.editable]="editMode">
+          </div>
+
+          <div class="field-group">
+            <label>Adresse</label>
+            <input type="text" formControlName="address" [readonly]="!editMode"
+                   [class.editable]="editMode">
+          </div>
+
+        </div>
+
+        <div class="form-actions" *ngIf="editMode">
+          <button type="submit" class="btn-save" [disabled]="profileForm.invalid">
+            <span class="material-icons">save</span>
+            Enregistrer
+          </button>
+        </div>
+      </form>
+
+      <!-- Préférences séjour -->
+      <div class="panel-section">
+        <h3>Préférences de séjour</h3>
+        <div class="prefs-grid">
+          <div class="pref-chip">
+            <span class="material-icons">hotel</span>
+            <div>
+              <span class="pref-label">Type de chambre</span>
+              <span class="pref-val">{{ preferences.roomType }}</span>
+            </div>
+          </div>
+          <div class="pref-chip">
+            <span class="material-icons">apartment</span>
+            <div>
+              <span class="pref-label">Étage préféré</span>
+              <span class="pref-val">{{ preferences.floor }}</span>
+            </div>
+          </div>
+          <div class="pref-chip">
+            <span class="material-icons">bed</span>
+            <div>
+              <span class="pref-label">Type d'oreiller</span>
+              <span class="pref-val">{{ preferences.pillow }}</span>
+            </div>
+          </div>
+          <div class="pref-chip">
+            <span class="material-icons">restaurant</span>
+            <div>
+              <span class="pref-label">Régime alimentaire</span>
+              <span class="pref-val">{{ preferences.dietary }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── ONGLET RÉSERVATIONS ── -->
+    <div class="tab-panel" *ngIf="activeTab === 'reservations'">
+
+      <div class="panel-header">
+        <h2>Mes réservations</h2>
+        <a routerLink="/Reservation" class="btn-new-res">
+          <span class="material-icons">add</span>
+          Nouvelle réservation
+        </a>
+      </div>
+
+      <div class="res-list">
+        <div class="res-card" *ngFor="let r of reservations" [class]="'res-card ' + r.status">
+
+          <div class="res-status-bar"></div>
+
+          <div class="res-main">
+            <div class="res-icon">
+              <span class="material-icons">{{ r.status === 'upcoming' ? 'event_upcoming' : r.status === 'completed' ? 'check_circle' : 'cancel' }}</span>
+            </div>
+            <div class="res-info">
+              <div class="res-top">
+                <span class="res-room">{{ r.room }}</span>
+                <span class="res-badge {{ r.status }}">
+                  {{ r.status === 'upcoming' ? 'À venir' : r.status === 'completed' ? 'Terminé' : 'Annulé' }}
+                </span>
+              </div>
+              <div class="res-dates">
+                <span class="material-icons">calendar_today</span>
+                {{ formatDate(r.checkIn) }} → {{ formatDate(r.checkOut) }}
+                &bull; {{ getNights(r.checkIn, r.checkOut) }} nuits
+              </div>
+              <div class="res-meta">
+                <span><span class="material-icons">group</span> {{ r.guests }} personnes</span>
+                <span><span class="material-icons">confirmation_number</span> {{ r.id }}</span>
+              </div>
+            </div>
+            <div class="res-total">
+              <span class="total-amount">{{ r.total | number }} €</span>
+              <span class="total-label">Total</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── ONGLET FIDÉLITÉ ── -->
+    <div class="tab-panel" *ngIf="activeTab === 'loyalty'">
+
+      <div class="panel-header">
+        <h2>Programme Fidélité</h2>
+      </div>
+
+      <!-- Carte de statut -->
+      <div class="loyalty-card">
+        <div class="loyalty-card-bg"></div>
+        <div class="loyalty-card-content">
+          <div class="lc-top">
+            <span class="lc-tier">
+              <span class="material-icons">star</span>
+              {{ user.tier }} Member
+            </span>
+            <span class="lc-logo">DANP HOTEL</span>
+          </div>
+          <div class="lc-name">{{ user.firstName }} {{ user.lastName }}</div>
+          <div class="lc-points">
+            <span class="lc-pts-value">{{ user.points | number }}</span>
+            <span class="lc-pts-label">Points</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Barre de progression vers Platinum -->
+      <div class="progress-section">
+        <div class="progress-header">
+          <span>{{ user.tier }}</span>
+          <span class="progress-info">{{ user.points | number }} / {{ user.pointsToNext | number }} pts vers <strong>{{ user.nextTier }}</strong></span>
+          <span>{{ user.nextTier }}</span>
+        </div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" [style.width.%]="loyaltyPercent"></div>
+        </div>
+        <p class="progress-hint">Plus que {{ (user.pointsToNext - user.points) | number }} points pour atteindre le statut {{ user.nextTier }}</p>
+      </div>
+
+      <!-- Avantages -->
+      <h3 class="section-title">Vos avantages {{ user.tier }}</h3>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <span class="material-icons benefit-icon">local_bar</span>
+          <h4>Bienvenue offerte</h4>
+          <p>Boisson de bienvenue incluse à chaque arrivée</p>
+        </div>
+        <div class="benefit-card">
+          <span class="material-icons benefit-icon">access_time</span>
+          <h4>Late Check-out</h4>
+          <p>Départ jusqu'à 14h sans supplément</p>
+        </div>
+        <div class="benefit-card">
+          <span class="material-icons benefit-icon">upgrade</span>
+          <h4>Surclassement</h4>
+          <p>Surclassement gratuit selon disponibilité</p>
+        </div>
+        <div class="benefit-card">
+          <span class="material-icons benefit-icon">spa</span>
+          <h4>Spa -10%</h4>
+          <p>10% de réduction sur tous les soins Spa</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── ONGLET SÉCURITÉ ── -->
+    <div class="tab-panel" *ngIf="activeTab === 'security'">
+
+      <div class="panel-header">
+        <h2>Sécurité du compte</h2>
+      </div>
+
+      <div class="security-section">
+        <h3>Changer le mot de passe</h3>
+        <form [formGroup]="passwordForm" class="pwd-form">
+
+          <div class="field-group full">
+            <label>Mot de passe actuel</label>
+            <div class="input-icon-wrap">
+              <span class="material-icons input-icon">lock</span>
+              <input type="password" formControlName="currentPwd" placeholder="••••••••">
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label>Nouveau mot de passe</label>
+            <div class="input-icon-wrap">
+              <span class="material-icons input-icon">lock_open</span>
+              <input type="password" formControlName="newPwd" placeholder="Min. 8 caractères">
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label>Confirmer le mot de passe</label>
+            <div class="input-icon-wrap">
+              <span class="material-icons input-icon">lock_open</span>
+              <input type="password" formControlName="confirmPwd" placeholder="Répétez le mot de passe">
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn-save" [disabled]="passwordForm.invalid">
+              <span class="material-icons">save</span>
+              Mettre à jour
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Zone danger -->
+      <div class="danger-zone">
+        <h3><span class="material-icons">warning</span> Zone de déconnexion</h3>
+        <p>Vous souhaitez quitter votre session ?</p>
+        <a routerLink="/login" class="btn-logout">
+          <span class="material-icons">logout</span>
+          Se déconnecter
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <app-footer></app-footer>
+</div>

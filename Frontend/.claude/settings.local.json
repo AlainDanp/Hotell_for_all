@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls \"C:\\\\Users\\\\alain\\\\OneDrive\\\\Documents\\\\X3\\(ESIEA\\)\\\\Projet\\\\dAnp Hotel\\\\Frontend\\\\Hotel\\\\Frontend\\\\src\\\\assets\" 2>/dev/null || echo \"no assets dir\")",
+      "Bash(ls \"C:\\\\Users\\\\alain\\\\OneDrive\\\\Documents\\\\X3\\(ESIEA\\)\\\\Projet\\\\dAnp Hotel\\\\Frontend\\\\Hotel\\\\Frontend\\\\src\")",
+      "Bash(ls \"C:\\\\Users\\\\alain\\\\OneDrive\\\\Documents\\\\X3\\(ESIEA\\)\\\\Projet\\\\dAnp Hotel\\\\Frontend\\\\Hotel\\\\Frontend\\\\assets\" 2>/dev/null; ls \"C:\\\\Users\\\\alain\\\\OneDrive\\\\Documents\\\\X3\\(ESIEA\\)\\\\Projet\\\\dAnp Hotel\\\\Frontend\\\\Hotel\\\\Frontend\\\\public\" 2>/dev/null)",
+      "Bash(ls \"C:\\\\Users\\\\alain\\\\OneDrive\\\\Documents\\\\X3\\(ESIEA\\)\\\\Projet\\\\dAnp Hotel\\\\Frontend\\\\Hotel\\\\Frontend\\\\public\\\\image\")",
+      "Bash(cat \"C:\\\\Users\\\\alain\\\\OneDrive\\\\Documents\\\\X3\\(ESIEA\\)\\\\Projet\\\\dAnp Hotel\\\\Frontend\\\\Hotel\\\\Frontend\\\\angular.json\" | grep -A 20 '\"assets\"')",
+      "Bash(ls \"C:\\\\Users\\\\alain\\\\OneDrive\\\\Documents\\\\X3\\(ESIEA\\)\\\\Projet\\\\dAnp Hotel\\\\Frontend\\\\Hotel\\\\Frontend\\\\src\\\\app\\\\component\")",
+      "Bash(find \"C:\\\\Users\\\\alain\\\\OneDrive\\\\Documents\\\\X3\\(ESIEA\\)\\\\Projet\\\\dAnp Hotel\\\\Frontend\\\\Hotel\\\\Frontend\\\\src\\\\app\\\\component\" -name \"*profile*\" 2>/dev/null; echo \"---\"; ls \"C:\\\\Users\\\\alain\\\\OneDrive\\\\Documents\\\\X3\\(ESIEA\\)\\\\Projet\\\\dAnp Hotel\\\\Frontend\\\\Hotel\\\\Frontend\\\\src\\\\app\\\\component\" | grep -i profile)",
+      "Bash(ls \"C:\\\\Users\\\\alain\\\\OneDrive\\\\Documents\\\\X3\\(ESIEA\\)\\\\Projet\\\\dAnp Hotel\\\\Frontend\\\\Hotel\\\\Frontend\")"
+    ]
+  }
+}

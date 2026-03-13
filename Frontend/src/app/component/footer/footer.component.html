@@ -1,63 +1,79 @@
-<footer id="contact">
-  <div class="section__container footer_container">
-    <div class="footer_col">
-      <a href="#" class="logo">
-        <img src="image/logo-hotel.png" alt="DANPHOTEL Logo" class="logo-image">
+<footer class="footer" id="contact">
+  <div class="footer_top">
+    <div class="footer_col footer_brand">
+      <a routerLink="/Homepage" class="logo">
+        <img src="/image/logo-hotel.png" alt="DANP HOTEL Logo" class="logo-image">
       </a>
       <p>
-        Explore the world with ease excitement through our compter traverl platform.
-        Your journey begins here, where seamless past meets unforgettable expericens.
+        Bienvenue au DANP Hotel, votre havre de luxe et d'élégance au cœur de Yaoundé.
+        Chaque séjour est une expérience inoubliable.
       </p>
       <ul class="footer_social">
-        <li>
-          <a href="#" ><i class='bx bxl-facebook'></i></a>
-        </li>
-        <li>
-          <a href="#" ><i class='bx bxl-instagram' ></i></a>
-        </li>
-        <li>
-          <a href="#" ><i class='bx bxl-youtube' ></i></a>
-        </li>
+        <li><a href="#" aria-label="Facebook"><i class='bx bxl-facebook'></i></a></li>
+        <li><a href="#" aria-label="Instagram"><i class='bx bxl-instagram'></i></a></li>
+        <li><a href="#" aria-label="YouTube"><i class='bx bxl-youtube'></i></a></li>
+        <li><a href="#" aria-label="Twitter"><i class='bx bxl-twitter'></i></a></li>
       </ul>
     </div>
+
     <div class="footer_col">
-      <h4>Quick Links</h4>
+      <h4>Navigation</h4>
       <ul class="footer_links">
-        <li><a href="#">Chamber</a></li>
-        <li><a href="#">Reservation</a></li>
-        <li><a href="#">About us</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a routerLink="/Homepage"><span class="material-icons">home</span>Accueil</a></li>
+        <li><a routerLink="/Chamber"><span class="material-icons">hotel</span>Chambres</a></li>
+        <li><a routerLink="/Services"><span class="material-icons">room_service</span>Services</a></li>
+        <li><a routerLink="/Reservation"><span class="material-icons">event</span>Réservation</a></li>
+        <li><a routerLink="/About"><span class="material-icons">info</span>À propos</a></li>
+        <li><a routerLink="/Contact"><span class="material-icons">contact_mail</span>Contact</a></li>
       </ul>
     </div>
+
     <div class="footer_col">
-      <h4> Contact US</h4>
+      <h4>Contactez-nous</h4>
       <ul class="footer_links">
         <li>
-          <a href="#">
-            <span><i class='bx bxs-phone'></i></span> +237 691 73 17 85
+          <a href="tel:+237691731785">
+            <span class="material-icons">phone</span>
+            +237 6 91 73 17 85
+          </a>
+        </li>
+        <li>
+          <a href="mailto:alain.datou@gmail.com">
+            <span class="material-icons">email</span>
+            alain.datou&#64;gmail.com
           </a>
         </li>
         <li>
           <a href="#">
-            <span><i class='bx bx-voicemail'></i></span> alain.datouogmail.com
+            <span class="material-icons">location_on</span>
+            Ngousso, Yaoundé, Cameroun
           </a>
         </li>
         <li>
           <a href="#">
-            <span><i class='bx bxs-map'></i></span> Ngousso, Yaoundé, Cameroon
+            <span class="material-icons">access_time</span>
+            Réception 24h/24 — 7j/7
           </a>
         </li>
       </ul>
     </div>
+
     <div class="footer_col">
-      <h4>Subscribe</h4>
-      <form action="/public">
-        <input type="text" placeholder="Enter your email">
-        <button class="btn"> Subscribe</button>
+      <h4>Newsletter</h4>
+      <p class="footer_newsletter_desc">Recevez nos offres exclusives et actualités directement dans votre boîte mail.</p>
+      <form class="footer_form">
+        <input type="email" placeholder="Votre adresse email">
+        <button type="submit" class="footer_btn">
+          <span class="material-icons">send</span>
+          S'abonner
+        </button>
       </form>
     </div>
   </div>
+
   <div class="footer_bar">
-    Copyright 2024 web Design Mastery | All right reserverd
+    <span>&copy; 2025 DANP Hotel — Tous droits réservés</span>
+    <span class="footer_bar_sep">|</span>
+    <span>Ngousso, Yaoundé, Cameroun</span>
   </div>
 </footer>

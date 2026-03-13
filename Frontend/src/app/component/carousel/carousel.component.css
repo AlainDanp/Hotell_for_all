@@ -285,11 +285,108 @@ body{
     opacity: 0;
   }
 }
-@media screen and (max-width: 678px) {
-  .carousel .list .item .content{
+/* ===== RESPONSIVE ===== */
+
+/* Tablette (≤ 1024px) */
+@media screen and (max-width: 1024px) {
+  .carousel .list .item .content {
+    padding-right: 20%;
+  }
+  .carousel .list .item .title,
+  .carousel .list .item .topic {
+    font-size: 3.5em;
+  }
+  .thumbnail {
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 30px;
+  }
+  .thumbnail .item {
+    width: 120px;
+    height: 180px;
+  }
+  .arrows {
+    top: auto;
+    bottom: 28px;
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    max-width: none;
+    justify-content: center;
+  }
+}
+
+/* Mobile large (≤ 768px) */
+@media screen and (max-width: 768px) {
+  .carousel {
+    height: 100svh;
+  }
+  .carousel .list .item .content {
+    top: 15%;
+    max-width: 90%;
     padding-right: 0;
   }
-  .carousel .list .item .content .title{
-    font-size: 30px;
+  .carousel .list .item .author {
+    letter-spacing: 4px;
+    font-size: 0.85em;
+  }
+  .carousel .list .item .title,
+  .carousel .list .item .topic {
+    font-size: 2.6em;
+    line-height: 1.2em;
+  }
+  .carousel .list .item .des {
+    font-size: 0.9em;
+    line-height: 1.6;
+  }
+  .carousel .list .item .buttons {
+    grid-template-columns: repeat(2, 110px);
+    margin-top: 14px;
+  }
+
+  /* Cacher le thumbnail sur mobile */
+  .thumbnail {
+    display: none;
+  }
+
+  /* Flèches en bas centré */
+  .arrows {
+    top: auto;
+    bottom: 24px;
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    max-width: none;
+    justify-content: center;
+    gap: 16px;
+  }
+  .arrows button {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+/* Mobile petit (≤ 480px) */
+@media screen and (max-width: 480px) {
+  .carousel .list .item .content {
+    top: 12%;
+    max-width: 94%;
+  }
+  .carousel .list .item .title,
+  .carousel .list .item .topic {
+    font-size: 2em;
+  }
+  .carousel .list .item .des {
+    font-size: 0.82em;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .carousel .list .item .buttons {
+    grid-template-columns: repeat(2, 100px);
+    grid-template-rows: 36px;
   }
 }

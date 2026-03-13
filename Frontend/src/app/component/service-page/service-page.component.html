@@ -1,0 +1,272 @@
+<app-header></app-header>
+
+<!-- ===== HERO ===== -->
+<div class="srv-hero">
+  <div class="hero-particles">
+    <span></span><span></span><span></span>
+    <span></span><span></span><span></span>
+  </div>
+  <div class="hero-content">
+    <p class="hero-tag">DANP Hotel — 5 Étoiles</p>
+    <h1 class="hero-title">Nos <span class="gold">Services</span><br />d'Exception</h1>
+    <p class="hero-sub">Un monde de luxe et de raffinement, pensé pour sublimer chaque instant de votre séjour.</p>
+    <div class="hero-scroll"><span class="material-icons">expand_more</span></div>
+  </div>
+  <div class="hero-overlay"></div>
+</div>
+
+<!-- ===== INTRO ===== -->
+<section class="intro-section">
+  <div class="intro-inner">
+    <div class="intro-text">
+      <span class="section-tag">Notre promesse</span>
+      <h2>Plus qu'un hôtel,<br /><span class="gold">une expérience totale</span></h2>
+      <p>Du réveil au coucher, chaque service du DANP Hotel est conçu pour vous offrir confort, plaisir et sérénité. Découvrez une offre complète pensée pour tous vos besoins.</p>
+    </div>
+    <div class="intro-stats">
+      <div class="istat" *ngFor="let s of stats">
+        <span class="istat-number">{{ s.value }}</span>
+        <span class="istat-label">{{ s.label }}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CARTES SERVICES (image de fond) ===== -->
+<section class="services-section" #servicesSection>
+  <div class="srv-header">
+    <span class="section-tag">Ce que nous offrons</span>
+    <h2>Tous Nos Services</h2>
+    <p>Chaque service est assuré par des professionnels dédiés à votre satisfaction absolue.</p>
+  </div>
+
+  <div class="services-grid">
+    <div class="srv-card"
+      *ngFor="let srv of services; let i = index"
+      [style.animation-delay]="(i * 0.08) + 's'"
+      [class.card-visible]="cardsVisible">
+
+      <!-- Image de fond -->
+      <div class="srv-bg" [style.background-image]="'url(' + srv.image + ')'"></div>
+      <!-- Gradient overlay -->
+      <div class="srv-overlay"></div>
+
+      <!-- Contenu par défaut -->
+      <div class="srv-default">
+        <div class="srv-icon-circle">
+          <span class="material-icons">{{ srv.icon }}</span>
+        </div>
+        <span class="srv-tag-badge">{{ srv.tag }}</span>
+        <h3>{{ srv.name }}</h3>
+      </div>
+
+      <!-- Contenu au hover -->
+      <div class="srv-hover-content">
+        <span class="material-icons srv-hover-icon">{{ srv.icon }}</span>
+        <h3>{{ srv.name }}</h3>
+        <p>{{ srv.desc }}</p>
+        <div class="srv-tags">
+          <span *ngFor="let tag of srv.tags">{{ tag }}</span>
+        </div>
+        <a routerLink="/Reservation" class="srv-btn">
+          <span class="material-icons">event_available</span> Réserver
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GALERIE MASONRY ===== -->
+<section class="gallery-section" #gallerySection>
+  <div class="srv-header">
+    <span class="section-tag">En images</span>
+    <h2>Découvrez Nos Espaces</h2>
+    <p>Une sélection de nos plus beaux espaces — piscine, fitness, spa, restaurant et bien plus encore.</p>
+  </div>
+
+  <div class="masonry-grid" [class.gallery-visible]="galleryVisible">
+    <div class="masonry-item {{ img.span }}"
+      *ngFor="let img of gallery; let i = index"
+      [style.animation-delay]="(i * 0.06) + 's'">
+      <img [src]="img.src" [alt]="img.alt" loading="lazy" />
+      <div class="masonry-overlay">
+        <span class="masonry-label" *ngIf="img.label">{{ img.label }}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SIGNATURE SPA ===== -->
+<section class="signature-section" #sigSection [class.sig-visible]="sigVisible">
+  <div class="sig-image">
+    <img src="image/piscine.jpg" alt="Spa & Piscine DANP Hotel" />
+    <div class="sig-image-overlay">
+      <div class="sig-badge"><span class="material-icons">spa</span> Service Signature</div>
+    </div>
+  </div>
+  <div class="sig-content">
+    <span class="section-tag light">L'Art du Bien-être</span>
+    <h2>Spa &amp; Piscine<br /><span class="gold">Prestige</span></h2>
+    <p>Plongez dans une bulle de sérénité. Notre spa 5 étoiles et notre piscine à débordement vous offrent une parenthèse enchantée loin du monde.</p>
+    <ul class="sig-list">
+      <li *ngFor="let item of spaFeatures">
+        <span class="material-icons">check_circle</span>{{ item }}
+      </li>
+    </ul>
+    <div class="sig-hours"><span class="material-icons">schedule</span>Ouvert tous les jours — 7h00 à 22h00</div>
+    <a routerLink="/Reservation" class="btn-sig">
+      <span class="material-icons">spa</span>Réserver une séance
+    </a>
+  </div>
+</section>
+
+<!-- ===== GALERIE FITNESS (sous-galerie thématique) ===== -->
+<section class="thematic-gallery">
+  <div class="thematic-header">
+    <span class="material-icons">fitness_center</span>
+    <div>
+      <h3>Salle de Sport &amp; Fitness</h3>
+      <p>Équipements de pointe, coachs certifiés, yoga et bien-être — disponibles 24h/24.</p>
+    </div>
+  </div>
+  <div class="thematic-grid">
+    <div class="th-item th-main">
+      <img src="image/sport.jpg"      alt="Salle de sport" />
+      <div class="th-overlay"><span>Musculation</span></div>
+    </div>
+    <div class="th-item">
+      <img src="image/cardio.jpg"     alt="Cardio" />
+      <div class="th-overlay"><span>Cardio</span></div>
+    </div>
+    <div class="th-item">
+      <img src="image/yoga.jpg"       alt="Yoga" />
+      <div class="th-overlay"><span>Yoga</span></div>
+    </div>
+    <div class="th-item">
+      <img src="image/yoga2.jpg"      alt="Yoga avancé" />
+      <div class="th-overlay"><span>Bien-être</span></div>
+    </div>
+    <div class="th-item">
+      <img src="image/stretching.jpg" alt="Stretching" />
+      <div class="th-overlay"><span>Stretching</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SIGNATURE RESTAURANT ===== -->
+<section class="signature-section reverse-sig" #restoSection [class.sig-visible]="restoVisible">
+  <div class="sig-content">
+    <span class="section-tag">Art Culinaire</span>
+    <h2>Restaurant<br /><span class="gold">Gastronomique</span></h2>
+    <p>Notre chef étoilé Patrick Mballa vous invite à un voyage culinaire exceptionnel, entre saveurs camerounaises revisitées et haute cuisine internationale.</p>
+    <ul class="sig-list">
+      <li *ngFor="let item of restoFeatures">
+        <span class="material-icons">check_circle</span>{{ item }}
+      </li>
+    </ul>
+    <div class="sig-hours"><span class="material-icons">schedule</span>Petit-déjeuner 6h30 · Déjeuner 12h00 · Dîner 19h00</div>
+    <a routerLink="/Reservation" class="btn-sig">
+      <span class="material-icons">restaurant</span>Réserver une table
+    </a>
+  </div>
+  <div class="sig-image">
+    <img src="image/img55.jpg" alt="Restaurant DANP Hotel" />
+    <div class="sig-image-overlay">
+      <div class="sig-badge"><span class="material-icons">restaurant</span> Chef Étoilé</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FORMULES ===== -->
+<section class="packages-section" #packSection>
+  <div class="srv-header">
+    <span class="section-tag">Nos Formules</span>
+    <h2>Choisissez Votre Expérience</h2>
+    <p>Des formules tout inclus pour profiter pleinement de nos services.</p>
+  </div>
+  <div class="packages-grid">
+    <div class="pkg-card"
+      *ngFor="let pkg of packages; let i = index"
+      [class.pkg-featured]="pkg.featured"
+      [style.animation-delay]="(i * 0.15) + 's'"
+      [class.card-visible]="packVisible">
+      <div class="pkg-top" *ngIf="pkg.featured">
+        <span class="material-icons">auto_awesome</span> Le plus populaire
+      </div>
+      <div class="pkg-icon"><span class="material-icons">{{ pkg.icon }}</span></div>
+      <h3 class="pkg-name">{{ pkg.name }}</h3>
+      <p class="pkg-desc">{{ pkg.description }}</p>
+      <ul class="pkg-features">
+        <li *ngFor="let f of pkg.features">
+          <span class="material-icons">check</span> {{ f }}
+        </li>
+      </ul>
+      <div class="pkg-price">
+        <span class="pkg-from">à partir de</span>
+        <span class="pkg-amount">{{ pkg.price }}€</span>
+        <span class="pkg-unit">/nuit</span>
+      </div>
+      <a routerLink="/Reservation" class="pkg-btn" [class.pkg-btn-gold]="pkg.featured">
+        <span class="material-icons">event_available</span> Réserver
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TÉMOIGNAGES ===== -->
+<section class="reviews-section">
+  <div class="srv-header">
+    <span class="section-tag">Ils nous font confiance</span>
+    <h2>Avis de Nos Clients</h2>
+  </div>
+  <div class="reviews-track-wrapper">
+    <div class="reviews-track">
+      <div class="review-card" *ngFor="let r of reviews">
+        <div class="review-stars">
+          <span class="material-icons" *ngFor="let s of [1,2,3,4,5]">star</span>
+        </div>
+        <p class="review-text">"{{ r.text }}"</p>
+        <div class="review-author">
+          <div class="author-avatar">{{ r.initials }}</div>
+          <div>
+            <span class="author-name">{{ r.name }}</span>
+            <span class="author-origin">{{ r.origin }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="review-card" *ngFor="let r of reviews">
+        <div class="review-stars">
+          <span class="material-icons" *ngFor="let s of [1,2,3,4,5]">star</span>
+        </div>
+        <p class="review-text">"{{ r.text }}"</p>
+        <div class="review-author">
+          <div class="author-avatar">{{ r.initials }}</div>
+          <div>
+            <span class="author-name">{{ r.name }}</span>
+            <span class="author-origin">{{ r.origin }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA FINAL ===== -->
+<section class="srv-cta-section">
+  <div class="cta-glow"></div>
+  <div class="cta-content">
+    <span class="material-icons cta-icon">hotel_class</span>
+    <h2>Prêt à vivre l'expérience<br /><span class="gold">DANP Hotel</span> ?</h2>
+    <p>Réservez maintenant et bénéficiez d'un accueil personnalisé et de tous nos services premium.</p>
+    <div class="cta-btns">
+      <a routerLink="/Reservation" class="cta-primary">
+        <span class="material-icons">event_available</span> Réserver mon séjour
+      </a>
+      <a routerLink="/Contact" class="cta-secondary">
+        <span class="material-icons">phone</span> Nous contacter
+      </a>
+    </div>
+  </div>
+</section>
+
+<app-footer></app-footer>

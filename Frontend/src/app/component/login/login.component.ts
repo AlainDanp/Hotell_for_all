@@ -1,5 +1,6 @@
 import { AfterViewInit, Component } from '@angular/core';
 import {Router} from "@angular/router";
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -8,6 +9,7 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent implements AfterViewInit {
   isActive = false;
+  private  readonly authService: AuthService | undefined;
 
   constructor(private router: Router) {}
   toggle() {
@@ -31,10 +33,11 @@ export class LoginComponent implements AfterViewInit {
       });
     }
   }
-  onLogin() {
-    // Ici, vous pouvez ajouter la logique de validation du formulaire si nécessaire
-
-    // Si la connexion est réussie, naviguez vers la page d'accueil
-    this.router.navigate(['/Homepage']);
+  onLogin(): void {
+    const email = (document.getElementById('email') as HTMLInputElement).value;
+    const password = (document.getElementById('password') as HTMLInputElement).value;
+    if (this.authService?.login(email, password)) {
+      this.router.navigate(['/Homepage']);
+    }
   }
 }

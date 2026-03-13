@@ -1,0 +1,22 @@
+<div class="page-404"
+  (mousemove)="onMouseMove($event)"
+  (mouseleave)="onMouseLeave()">
+
+  <!-- Image de fond -->
+  <div class="bg-image"></div>
+
+  <!-- Overlay sombre avec trou de lumière -->
+  <div class="torch-overlay" #overlay></div>
+
+  <!-- Contenu 404 -->
+  <div class="content-404" #content>
+    <div class="label-404">Erreur</div>
+    <h1 class="number-404">404</h1>
+    <p class="msg-404">Oups… cette page s'est perdue dans l'obscurité.</p>
+    <a routerLink="/Homepage" class="btn-home">
+      <span class="material-icons">home</span>
+      Retour à l'accueil
+    </a>
+  </div>
+
+</div>

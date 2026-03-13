@@ -1,0 +1,107 @@
+/* ===== BASE ===== */
+.page-404 {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  cursor: default;
+  user-select: none;
+}
+
+/* ===== IMAGE DE FOND ===== */
+.bg-image {
+  position: absolute;
+  inset: 0;
+  background-image: url('/image/404.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.55) saturate(0.7);
+  z-index: 0;
+}
+
+/* ===== OVERLAY TORCHE ===== */
+.torch-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.99);
+  transition: background 0.05s ease;
+  pointer-events: none;
+}
+
+/* ===== CONTENU 404 ===== */
+.content-404 {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  transition: opacity 0.5s;
+}
+
+.label-404 {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #efc708;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  margin-bottom: 10px;
+  animation: fadeIn 1s ease both;
+}
+
+.number-404 {
+  font-size: clamp(8rem, 20vw, 18rem);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1;
+  margin: 0;
+  text-shadow:
+    0 0 40px rgba(239,199,8,0.5),
+    0 0 80px rgba(239,199,8,0.2);
+  animation: fadeIn 1s ease 0.2s both;
+  letter-spacing: -4px;
+}
+
+.msg-404 {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.75);
+  margin: 16px 0 36px;
+  max-width: 400px;
+  line-height: 1.6;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.8);
+  animation: fadeIn 1s ease 0.4s both;
+}
+
+.btn-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 38px;
+  background: #efc708;
+  color: #111;
+  font-weight: 800;
+  font-size: 1rem;
+  border-radius: 40px;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+  box-shadow: 0 4px 30px rgba(239,199,8,0.55), 0 0 0 3px rgba(239,199,8,0.2);
+  animation: fadeIn 1s ease 0.6s both;
+}
+
+.btn-home:hover {
+  background: #ffe030;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 40px rgba(239,199,8,0.65), 0 0 0 4px rgba(239,199,8,0.3);
+}
+
+.btn-home .material-icons { font-size: 1.1rem; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
